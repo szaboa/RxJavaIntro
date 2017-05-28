@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(
                         user -> Log.d(TAG, user.toString()),
                         error -> Log.d(TAG, "Error during fetch"),
-                        () -> Log.d(TAG, "Error during fetch")));
+                        () -> Log.d(TAG, "Complete")));
     }
 
     @Override
