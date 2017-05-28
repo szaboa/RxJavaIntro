@@ -20,18 +20,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fetchUser();
+        fetchRepositories();
     }
 
-    private void fetchUser() {
+    private void fetchRepositories() {
         DataRepository dataRepository = DataRepository.getInstance();
-        compositeDisposable.add(dataRepository.getUser("szaboa")
+        compositeDisposable.add(dataRepository.getRepositories("szaboa")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        user -> Log.d(TAG, user.toString()),
+                        repositories -> Log.d(TAG, repositories.toString()),
                         error -> Log.d(TAG, "Error during fetch"),
-                        () -> Log.d(TAG, "Error during fetch")));
+                        () -> Log.d(TAG, "Complete")));
     }
 
     @Override

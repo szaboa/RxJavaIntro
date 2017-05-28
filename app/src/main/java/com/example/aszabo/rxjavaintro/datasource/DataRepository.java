@@ -2,7 +2,10 @@ package com.example.aszabo.rxjavaintro.datasource;
 
 import com.example.aszabo.rxjavaintro.api.GithubService;
 import com.example.aszabo.rxjavaintro.api.RetrofitClient;
+import com.example.aszabo.rxjavaintro.model.GithubRepository;
 import com.example.aszabo.rxjavaintro.model.GithubUser;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 
@@ -29,5 +32,11 @@ public class DataRepository {
 
     public Observable<GithubUser> getUser(String username) {
         return service.getUser(username);
+    }
+
+    public Observable<List<GithubRepository>> getRepositories(String username) {
+        return service.getUser(username)
+                .map(user -> user.getName())
+                .flatMap(name -> service.getRepositories(name));
     }
 }
