@@ -1,5 +1,4 @@
-# RxJavaIntro
-RxJava examples on Android
+# rxjava_android_examples
 
 branch retrofit_01 - simple api request with observable
 
